@@ -114,7 +114,7 @@ Here are five German traffic signs that I found on the web:
 ![speed limit end](examples/1.jpg) ![priority road](examples/2.jpg) ![children crossing](examples/3.png)
 ![drive left](examples/4.png) ![general attention](examples/5.png)
 
-The first image might be difficult to classify because ...
+The first image might be difficult to classify because the sign is partially covered with snow. In fact it's the only one that the classifierd failed to tag correctly!
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -122,16 +122,20 @@ The code for making predictions on my final model is located in the tenth cell o
 
 Here are the results of the prediction:
 
+[32 12 11 39 18]
+[32 12 28 39 18]
+
+
 | Image			        |     Prediction	        					|
 |:---------------------:|:---------------------------------------------:|
-| Stop Sign      		| Stop sign   									|
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| End of all speed and passing limits      		| End of all speed and passing limits   									|
+| Priority road     			| Priority road 										|
+| Children crossing					| Right-of-way at the next intersection											|
+| Keep left	      		| Keep left					 				|
+| General caution			| General caution      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -139,13 +143,56 @@ The code for making predictions on my final model is located in the 11th cell of
 
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
+1. True label: **32 End of all speed and passing limits**
+
 | Probability         	|     Prediction	        					|
 |:---------------------:|:---------------------------------------------:|
-| .60         			| Stop sign   									|
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.0         			| 6 End of speed limit (80km/h)   									|
+| 0.0     				| End of no passing 										|
+| 0.0					| End of all speed and passing limits											|
+| 0.0	      			| End of no passing by vehicles over 3.5 metric tons					 				|
+| 0.0				    | Priority road      							|
 
+2. True label: **12 Priority road**
 
-For the second image ...
+| Probability           |     Prediction                    |
+|:---------------------:|:---------------------------------------------:|
+| 0.999972               | 12 Priority road                     |
+| 0.0             | Yield                     |
+| 0.0         | Speed limit (50km/h)                     |
+| 0.0             | Turn left ahead                  |
+| 0.0           | Right-of-way at the next intersection                   |
+
+3. True label: **28 Children crossing**
+
+| Probability           |     Prediction                    |
+|:---------------------:|:---------------------------------------------:|
+| 1.0               | Speed limit (60km/h)                     |
+| 0.0             | Speed limit (80km/h)                     |
+| 0.0         | Children crossing                     |
+| 0.0             | Right-of-way at the next intersection                  |
+| 0.0           | Speed limit (50km/h)                   |
+
+4. True label: **39 Keep left**
+
+| Probability           |     Prediction                    |
+|:---------------------:|:---------------------------------------------:|
+| 1.0               | Keep left                     |
+| 0.0             | Yield                     |
+| 0.0         | Speed limit (50km/h)                     |
+| 0.0             | Speed limit (80km/h)                |
+| 0.0           | Speed limit (60km/h)                 |
+
+5. True label: **18 General caution**
+
+| Probability           |     Prediction                    |
+|:---------------------:|:---------------------------------------------:|
+| 1.0               | General caution                     |
+| 0.0             | Traffic signals         |
+| 0.0         | Road work                     |
+| 0.0             | Pedestrians                |
+| 0.0           | Right-of-way at the next intersection                 |
+
+It wasn't a suprise that this particular, snow-covered "Children crossing" sign wasn't classified corretly.
+In this particular run, the classifier had trouble with "End of all speed limits", which it certainly
+confused with other limit end or no passing end signs.
