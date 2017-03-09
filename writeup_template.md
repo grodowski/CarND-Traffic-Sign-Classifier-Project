@@ -111,8 +111,8 @@ The model isn't perfect due to 90% accuracy, but with an AUC score of above 95% 
 
 Here are five German traffic signs that I found on the web:
 
-![speed limit end][examples/1.jpg] ![priority road][examples/2.jpg] ![children crossing][examples/3.png]
-![drive left][examples/4.png] ![general attention][examples/5.png]
+![speed limit end](examples/1.jpg) ![priority road](examples/2.jpg) ![children crossing](examples/3.png)
+![drive left](examples/4.png) ![general attention](examples/5.png)
 
 The first image might be difficult to classify because ...
 
