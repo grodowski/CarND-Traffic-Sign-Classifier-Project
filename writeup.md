@@ -76,6 +76,21 @@ The code for my final model is located in the sixth cell of the ipython notebook
 
 I decided to use a canned LeNet solution with 32x32x1 inputs. I added L2 regularization and dropped the last convolutional layer. It incresed my accuracy by 0.1 (!) and didn't affect recall and AUC. Experiments with converting the network shape to support RGB images didn't help improve my scores.
 
+The complete architecture may be presented as the following table:
+
+| Layer | Input size | Output size |
+|:=====:|:===========:|:==========:|
+| Convolution 1 | 32x32x1 | 28x28x6 |
+| Relu | | - | - |
+| Max Pool | 28x28x6 | 14x14x6 |
+| Convolution 2 | 14x14x6 | 10x10x16 |
+| Relu | - | - |
+| Max Pool | 10x10x16 | 5x5x16 |
+| Flatten | 5x5x16 | 400 |
+| Linear 1 | 400 | 84 |
+| Relu | - | - |
+| Linear 2 | 84 | 43 |
+
 ####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 The code for training the model is located from sixth to nineth cell of the ipython notebook.
@@ -125,6 +140,7 @@ Here are the results of the prediction:
 [32 12 11 39 18]
 [32 12 28 39 18]
 
+Presented data show an accuracy score of 80%, while the model generally yields at least 3 correct labels (from 60 to 100% accuracy). This is less than the test set accuracy of 88%.
 
 | Image			        |     Prediction	        					|
 |:---------------------:|:---------------------------------------------:|
@@ -135,7 +151,16 @@ Here are the results of the prediction:
 | General caution			| General caution      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%
+These are overall accuracies of training, validation and test data from a sample network run:
+
+| Dataset | Accuracy |
+|:========:|:========:|
+| Training | 99% |
+| Validation | 88% |
+| Test | 88% |
+
+They indicate that the model could be further improved to better generalize validation and test data.
+
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
