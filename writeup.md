@@ -79,7 +79,7 @@ I decided to use a canned LeNet solution with 32x32x1 inputs. I added L2 regular
 The complete architecture may be presented as the following table:
 
 | Layer | Input size | Output size |
-|:=====:|:===========:|:==========:|
+|:------:|:-----------:|:---------------:|
 | Convolution 1 | 32x32x1 | 28x28x6 |
 | Relu | | - | - |
 | Max Pool | 28x28x6 | 14x14x6 |
@@ -154,7 +154,7 @@ Presented data show an accuracy score of 80%, while the model generally yields a
 These are overall accuracies of training, validation and test data from a sample network run:
 
 | Dataset | Accuracy |
-|:========:|:========:|
+|:------------:|:----------:|
 | Training | 99% |
 | Validation | 88% |
 | Test | 88% |
